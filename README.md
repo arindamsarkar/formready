@@ -10,12 +10,23 @@ Install Node.js 20+ and Python 3, then run:
 git clone https://github.com/arindamsarkar/formready.git
 cd formready
 npm ci
-node scripts/vendor.mjs
-npm run check
+npm run build
 python -m http.server 8080 --directory dist
 ```
 
 Open http://localhost:8080. On Windows use `py` instead of `python` if needed. Do not open index.html as a file URL: PDF modules need HTTP.
+
+## Deploy on GitHub Pages
+
+In the repository settings, open **Pages** and set **Source** to **GitHub Actions**.
+The included `Deploy to GitHub Pages` workflow builds and publishes `dist` on pushes
+to `main`, or when run manually from the Actions tab. It installs dependencies with
+`npm ci` and runs `npm run build`, so the PDF and ZIP libraries are included in the
+site without committing generated vendor files. No API keys or external hosting
+account are needed. The deployed site is viewable by anyone.
+
+For another static host, use `npm ci && npm run build` as the build command and
+`dist` as the publish directory. Uploading the unbuilt `dist` directory will not work.
 
 ## Features
 - Mixed PDF/JPG/PNG/WebP batches: 100 files, 25 MB each, 150 MB combined.
