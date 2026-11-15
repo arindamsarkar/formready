@@ -1,0 +1,1 @@
+{"name":"formready","version":"0.1.0","private":true,"type":"module","scripts":{"check":"node --check dist/app.js","start":"python -m http.server 8080 --directory dist"},"dependencies":{"pdf-lib":"1.17.1","pdfjs-dist":"4.10.38","fflate":"0.8.2"}}
